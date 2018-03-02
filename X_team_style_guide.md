@@ -35,27 +35,27 @@ Use comments within source files to:
 
 * classes:
   * Use javadoc:
-  /**
-  "*"This is the GraphNode class for the graph
-  "*" /<br>
-  public class GraphNode{}
+  >/**
+  >/* This is the GraphNode class for the graph
+  >/*/<br>
+  >public class GraphNode{}
 * fields:
   * Use "//"
   >private GraphNode root; //The root of the graph
 * constructors:
   * Use javadoc:
-  /**
-  "*" This is the constructor for GraphNode Class which doesn't take input
-  "*" /<br>
-  public GraphNode(){}
+  >/** <br>
+  >/* This is the constructor for GraphNode Class which doesn't take input <br>
+  >/*/<br>
+  >public GraphNode(){}
 * methods:
   * Use javadoc:
-  /**
-  /* Add the input with 2
-  /* @param num the number to be added
-  /* @return the sum of the input and 2
-  /* /<br>
-  public int addTwo(int num){}
+  >/** <br>
+  >* Add the input with 2<br>
+  >* @param num the number to be added <br>
+  >* @return the sum of the input and 2 <br>
+  >*/<br>
+  >public int addTwo(int num){}
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
   * if(1==0){
