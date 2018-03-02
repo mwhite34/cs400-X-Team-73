@@ -51,10 +51,10 @@ Use comments within source files to:
 * methods:
   * Use javadoc:
   /**
-  "*" Add the input with 2
-  "*" @param num the number to be added
-  "*" @return the sum of the input and 2
-  "*" /<br>
+  /* Add the input with 2
+  /* @param num the number to be added
+  /* @return the sum of the input and 2
+  /* /<br>
   public int addTwo(int num){}
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
@@ -67,11 +67,11 @@ Use comments within source files to:
                 >>>>break;
      >>default: courseCode = 400;
                 >>>>>break;
-   >}
+  >>}
   * while loops:
   >while(true){
  	>>System.out.println("This will never end.");
- >}
+  >}
   * for loops
   for(initialization; condition ; increment/decrement)
 {
