@@ -39,9 +39,9 @@ Use comments within source files to:
 * methods
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
-    if(1==0){
-      System.out.print("This is the start of a NEW WORLD!");
-    }
+  * if(1==0){
+  *   System.out.print("This is the start of a NEW WORLD!");
+  * }
   * switch statement
   * while loops
   * for loops
