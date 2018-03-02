@@ -35,34 +35,43 @@ Use comments within source files to:
 
 * classes:
   * Use javadoc:
-  * /**
-  * This is the GraphNode class for the graph
-  * * /
-  * public class GraphNode{}
+  /**
+  "*"This is the GraphNode class for the graph
+  "*" /<br>
+  public class GraphNode{}
 * fields:
-  * Use //
-  * private GraphNode root; //The root of the graph
+  * Use "//"
+  >private GraphNode root; //The root of the graph
 * constructors:
   * Use javadoc:
-  * /**
-  * This is the constructor for GraphNode Class which doesn't take input
-  * * /
-  * public GraphNode(){}
+  /**
+  "*" This is the constructor for GraphNode Class which doesn't take input
+  "*" /<br>
+  public GraphNode(){}
 * methods:
   * Use javadoc:
-  * /**
-  * Add the input with 2
-  * @param num the number to be added
-  * @return the sum of the input and 2
-  * * /
-  * public int addTwo(int num){}
+  /**
+  "*" Add the input with 2
+  "*" @param num the number to be added
+  "*" @return the sum of the input and 2
+  "*" /<br>
+  public int addTwo(int num){}
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
   * if(1==0){
   *   System.out.print("This is the start of a NEW WORLD!");
   * }
-  * switch statement
-  * while loops
+  * switch statement:
+  >switch (course) {
+     >>case 1:  courseCode = 300;
+                >>>>break;
+     >>default: courseCode = 400;
+                >>>>>break;
+   >}
+  * while loops:
+  >while(true){
+ 	>>System.out.println("This will never end.");
+ >}
   * for loops
   for(initialization; condition ; increment/decrement)
 {
