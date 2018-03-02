@@ -10,9 +10,9 @@
 * interfaces
 * classes
 * exception types
-* fields
-* methods
-* parameters
+* fields:  lowerCamelCaseNoun
+* methods: makeNameVerbInLowerCamelCase
+* parameters: lowerCamelCaseNoun
 * local variables
 * instance constants
 * class constants
