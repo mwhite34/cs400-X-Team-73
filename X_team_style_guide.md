@@ -95,6 +95,7 @@ Use comments within source files to:
   * enhanced for loops
   ```java
   for (String element : array) { //code 
+      statement(s);
   }
   ```
 
