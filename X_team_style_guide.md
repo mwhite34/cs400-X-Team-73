@@ -36,8 +36,8 @@ Use comments within source files to:
 * classes:
   * Use javadoc:
   >/**
-  >/* This is the GraphNode class for the graph
-  >/*/<br>
+  >* This is the GraphNode class for the graph
+  >*/<br>
   >public class GraphNode{}
 * fields:
   * Use "//"
@@ -45,8 +45,8 @@ Use comments within source files to:
 * constructors:
   * Use javadoc:
   >/** <br>
-  >/* This is the constructor for GraphNode Class which doesn't take input <br>
-  >/*/<br>
+  >* This is the constructor for GraphNode Class which doesn't take input <br>
+  >*/<br>
   >public GraphNode(){}
 * methods:
   * Use javadoc:
@@ -57,29 +57,29 @@ Use comments within source files to:
   >*/<br>
   >public int addTwo(int num){}
 * coding style (brackets, horizontal, and vertical spacing) for:
-  * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
-  * if(1==0){
-  *   System.out.print("This is the start of a NEW WORLD!");
+  * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:<br>
+  * if(1==0){ <br>
+  *   System.out.print("This is the start of a NEW WORLD!");<br>
   * }
   * switch statement:
-  >switch (course) {
-     >>case 1:  courseCode = 300;
-                >>>>break;
-     >>default: courseCode = 400;
-                >>>>>break;
-  >>}
-  * while loops:
-  >while(true){
- 	>>System.out.println("This will never end.");
+  >switch (course) { <br>
+     >>case 1:  courseCode = 300; <br>
+                >>>>break; <br>
+     >>default: courseCode = 400; <br>
+                >>>>>break; <br>
+  >>} 
+  * while loops: <br>
+  >while(true){ <br>
+ 	>>System.out.println("This will never end."); <br>
   >}
   * for loops
-  for(initialization; condition ; increment/decrement)
-{
-   statement(s);
-}
+  for(initialization; condition ; increment/decrement) <br>
+{ <br>
+   statement(s); <br>
+} 
 
   * enhanced for loops
-  for (String element : array) {
-    //code
+  for (String element : array) { <br>
+    //code <br>
 }
 
