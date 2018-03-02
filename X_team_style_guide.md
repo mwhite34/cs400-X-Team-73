@@ -16,9 +16,9 @@
 * fields:  private int lowerCamelCaseNoun;
 * methods: private void makeNameVerbInLowerCamelCase(){}
 * parameters: private void test(int lowerCamelCaseNoun){}
-* local variables
-* instance constants
-* class constants
+* local variables: firstName, orderNumber
+* instance constants: RED, YELLOW, MAX_PRIORITY
+* class constants: RED, YELLOW, MAX_PRIORITY
 
 ## Commenting style for public and private members of a class or interface:
 
