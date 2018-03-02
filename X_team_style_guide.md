@@ -1,6 +1,6 @@
 # X-Team 73 Style Guide
 
-<brief description of your team's opinion or philosophy regarding Style Guides>
+* We will use good programming style to ensure that their source code is easily read and understood by people and the compiler. Credit to Gary Dahl.
 
 ## Naming conventions
 
