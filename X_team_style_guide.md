@@ -4,25 +4,21 @@
 
 ## Naming conventions
 
-<brief statement describing your team's naming conventions>
+* Identifiers use only ASCII letters and digits, and underscores in a some constants.
+* Class and Interface names are written in UpperCamelCase. Class names are typically nouns or noun phrases.
+* Methods, fields and local variable names are written in lowerCamelCase. Method names are typically verbs or verb phrases. 
+* Constant names use CONSTANT_CASE: all uppercase letters, with words separated by underscores.
 
 ### Examples
-* interfaces
-* classes
-* exception types
-* fields:  lowerCamelCaseNoun
-* methods: makeNameVerbInLowerCamelCase
-* parameters: lowerCamelCaseNoun
-* local variables: 
-int             i;
-char            c;
-float           myWidth;
-* instance constants:
-static final int MIN_WIDTH = 4;
-static final int MAX_WIDTH = 999;
-static final int GET_THE_CPU = 1;
+* interfaces: Comparable
+* classes: RedBlackTree
+* exception types: RuntimeException
+* fields
+* methods
+* parameters
+* local variables
+* instance constants
 * class constants
-public static final String DEFAULT_NAME = "Bar";
 
 ## Commenting style for public and private members of a class or interface:
 
