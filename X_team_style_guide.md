@@ -35,51 +35,66 @@ Use comments within source files to:
 
 * classes:
   * Use javadoc:
-  >/**
-  >* This is the GraphNode class for the graph
-  >*/<br>
-  >public class GraphNode{}
+  ```java
+  /**
+   * This is the GraphNode class for the graph
+   */
+  public class GraphNode{}
+  ```
 * fields:
   * Use "//"
-  >private GraphNode root; //The root of the graph
+  ```java
+  private GraphNode root; //The root of the graph
+  ```
 * constructors:
   * Use javadoc:
-  >/** <br>
-  >* This is the constructor for GraphNode Class which doesn't take input <br>
-  >*/<br>
-  >public GraphNode(){}
+  ```java
+  /** 
+   * This is the constructor for GraphNode Class which doesn't take input 
+   */
+  public GraphNode(){}
+  ```
 * methods:
   * Use javadoc:
-  >/** <br>
-  >* Add the input with 2<br>
-  >* @param num the number to be added <br>
-  >* @return the sum of the input and 2 <br>
-  >*/<br>
-  >public int addTwo(int num){}
+  ```java
+  /** 
+   * Add the input with 2
+   * @param num the number to be added 
+   * @return the sum of the input and 2 
+   */
+  public int addTwo(int num){}
+  ```
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:<br>
-  * if(1==0){ <br>
-  *   System.out.print("This is the start of a NEW WORLD!");<br>
-  * }
+  ```java
+  if (1 == 0) { 
+       System.out.print("This is the start of a NEW WORLD!");
+  }
+  ```
   * switch statement:
-  >switch (course) { <br>
-     >>case 1:  courseCode = 300; <br>
-                >>>>break; <br>
-     >>default: courseCode = 400; <br>
-                >>>>>break; <br>
-  >>} 
-  * while loops: <br>
-  >while(true){ <br>
- 	>>System.out.println("This will never end."); <br>
-  >}
+  ```java
+  switch (course) { 
+      case 1:  courseCode = 300; 
+          break; 
+      default: courseCode = 400; 
+          break; 
+  }
+  ```
+  * while loops: 
+  ```java
+  while(true) { 
+ 	    System.out.println("This will never end."); 
+  }
+  ```
   * for loops
-  for(initialization; condition ; increment/decrement) <br>
-{ <br>
-   statement(s); <br>
-} 
-
+  ```java
+  for (initialization; condition; increment/decrement) { 
+      statement(s); 
+  } 
+  ```
   * enhanced for loops
-  for (String element : array) { <br>
-    //code <br>
-}
+  ```java
+  for (String element : array) { //code 
+  }
+  ```
 
