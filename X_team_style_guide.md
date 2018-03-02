@@ -64,4 +64,13 @@ Use comments within source files to:
   * switch statement
   * while loops
   * for loops
+  for(initialization; condition ; increment/decrement)
+{
+   statement(s);
+}
+
   * enhanced for loops
+  for (String element : array) {
+    //code
+}
+
