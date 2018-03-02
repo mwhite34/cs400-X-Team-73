@@ -9,7 +9,7 @@
        * GitHub username 4: HarveyWang
        * GitHub username 5: Haruto2017
    * When did you complete this exercise? 6:30 pm Monday 3/1
-   * How long did it take your team to complete this exercise? 30 Minutes
+   * How long did it take your team to complete this exercise? 1 Hour
 
 ## Table of Contents
 
