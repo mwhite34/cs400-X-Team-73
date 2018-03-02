@@ -22,7 +22,14 @@
 
 ## Commenting style for public and private members of a class or interface:
 
-<brief statement of your team's commenting style>
++Use comments within source files to:
++
++* highlight the major steps of your algorithm
++* explain long calculations or conditions tied to unobvious state
++* clarify convoluted or unusual code
++* clarify the purpose of non-temporary local variables and fields
++* mark locations where you suspect a bug may exist
++* mark locations where improvements or enhancements are planned
 
 ### Examples
 
