@@ -13,20 +13,20 @@
 * fields:  lowerCamelCaseNoun
 * methods: makeNameVerbInLowerCamelCase
 * parameters: lowerCamelCaseNoun
-* local variables
-* instance constants
+* local variables: 
+int             i;
+char            c;
+float           myWidth;
+* instance constants:
+static final int MIN_WIDTH = 4;
+static final int MAX_WIDTH = 999;
+static final int GET_THE_CPU = 1;
 * class constants
+public static final String DEFAULT_NAME = "Bar";
 
 ## Commenting style for public and private members of a class or interface:
 
-Use comments within source files to:
-
-* highlight the major steps of your algorithm
-* explain long calculations or conditions tied to unobvious state
-* clarify convoluted or unusual code
-* clarify the purpose of non-temporary local variables and fields
-* mark locations where you suspect a bug may exist
-* mark locations where improvements or enhancements are planned
+<brief statement of your team's commenting style>
 
 ### Examples
 
