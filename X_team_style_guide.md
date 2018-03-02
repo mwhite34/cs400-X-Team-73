@@ -1,6 +1,6 @@
 # X-Team 73 Style Guide
 
-* We will use good programming style to ensure that their source code is easily read and understood by people and the compiler. Credit to Gary Dahl.
+* We will use good programming style to ensure that our source code is easily read and understood by people and the compiler. Credit to Gary Dahl.
 
 ## Naming conventions
 
@@ -33,10 +33,29 @@ Use comments within source files to:
 
 ### Examples
 
-* classes
-* fields
-* constructors
-* methods
+* classes:
+  * Use javadoc:
+  * /**
+  * This is the GraphNode class for the graph
+  * * /
+  * public class GraphNode{}
+* fields:
+  * Use //
+  * private GraphNode root; //The root of the graph
+* constructors:
+  * Use javadoc:
+  * /**
+  * This is the constructor for GraphNode Class which doesn't take input
+  * * /
+  * public GraphNode(){}
+* methods:
+  * Use javadoc:
+  * /**
+  * Add the input with 2
+  * @param num the number to be added
+  * @return the sum of the input and 2
+  * * /
+  * public int addTwo(int num){}
 * coding style (brackets, horizontal, and vertical spacing) for:
   * if statements: let the bracket follow with the if statement in the same line and then hit ENTER:
   * if(1==0){
