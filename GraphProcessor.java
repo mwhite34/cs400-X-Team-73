@@ -41,6 +41,21 @@ import java.util.stream.Stream;
  */
 public class GraphProcessor {
 
+    class VertexNode implements Comparable<VertexNode>{
+        String name;
+        Integer weight = Integer.MAX_VALUE;
+        VertexNode pred = null;
+        boolean visited = false;
+        VertexNode(String name){
+            name = this.name;
+        }
+        @Override
+        public int compareTo(VertexNode other) {
+            return weight.compareTo(other.weight);
+        }
+        
+    }
+    
 	/**
 	 * Graph which stores the dictionary words and their associated connections
 	 */
@@ -90,46 +105,52 @@ public class GraphProcessor {
 
 
 	/**
-	 * Gets the list of words that create the shortest path between word1 and word2
-	 * 
-	 * Example: Given a dictionary,
-	 *             cat
-	 *             rat
-	 *             hat
-	 *             neat
-	 *             wheat
-	 *             kit
-	 *  shortest path between cat and wheat is the following list of words:
-	 *     [cat, hat, heat, wheat]
-	 * 
-	 * @param word1 first word
-	 * @param word2 second word
-	 * @return List<String> list of the words
-	 */
+     * Gets the list of words that create the shortest path between word1 and word2
+     * 
+     * Example: Given a dictionary,
+     *             cat
+     *             rat
+     *             hat
+     *             neat
+     *             wheat
+     *             kit
+     *  shortest path between cat and wheat is the following list of words:
+     *     [cat, hat, heat, wheat]
+     *
+     * If word1 = word2, List will be empty. 
+     * Both the arguments will always be present in the graph.
+     * 
+     * @param word1 first word
+     * @param word2 second word
+     * @return List<String> list of the words
+     */
 	public List<String> getShortestPath(String word1, String word2) {
-
-		return null;
+		return data.get(word1).get(word2);
 	}
 
-	/**
-	 * Gets the distance of the shortest path between word1 and word2
-	 * 
-	 * Example: Given a dictionary,
-	 *             cat
-	 *             rat
-	 *             hat
-	 *             neat
-	 *             wheat
-	 *             kit
-	 *  distance of the shortest path between cat and wheat, [cat, hat, heat, wheat]
-	 *   = 3 (the number of edges in the shortest path)
-	 * 
-	 * @param word1 first word
-	 * @param word2 second word
-	 * @return Integer distance
-	 */
+    /**
+     * Gets the distance of the shortest path between word1 and word2
+     * 
+     * Example: Given a dictionary,
+     *             cat
+     *             rat
+     *             hat
+     *             neat
+     *             wheat
+     *             kit
+     *  distance of the shortest path between cat and wheat, [cat, hat, heat, wheat]
+     *   = 3 (the number of edges in the shortest path)
+     *
+     * Distance = -1 if no path found between words (true also for word1=word2)
+     * Both the arguments will always be present in the graph.
+     * 
+     * @param word1 first word
+     * @param word2 second word
+     * @return Integer distance
+     */
 	public Integer getShortestDistance(String word1, String word2) {
-		return null;
+	    if(data.get(word1).get(word2).isEmpty()) return -1;
+	    else return data.get(word1).get(word2).size();
 	}
 
 	/**
@@ -138,90 +159,66 @@ public class GraphProcessor {
 	 * Any shortest path algorithm can be used (Djikstra's or Floyd-Warshall recommended).
 	 */
 	public void shortestPathPrecomputation() {
+		ArrayList<VertexNode> vertexes = new ArrayList<>(); //array of vertexnode
+		//add vertexes into the array
+	    for (String vertex : this.graph.getAllVertices()) {
+	        vertexes.add(new VertexNode(vertex));
+	    }
+	    //build up the map of the map
+	    for(int i = 0; i < vertexes.size(); i++) { //for each vertex
+	        data.put(vertexes.get(i).name, dijkstra(vertexes, vertexes.get(i))); //put into the map
+	        //create an array of new vertexnodes because we've changed pred, weight in the algorithm
+	        for(int k = 0; k < vertexes.size(); k++) {
+	            vertexes.set(i, new VertexNode(vertexes.get(i).name));
+	        }
+	    }
 
-		/*
-		 * for each vertex V
-initialize V’s visited mark to false initialize V's total weight to “infinity” initialize V's predecessor to null
-set start vertex’s total weight to 0
-create new priority queue pq pq.insert( [start vertex total weight,start vertex] )
-while !pq.isEmpty() [C’s total weight,C] = pq.removeMin() set C’s visited mark to true
-for each unvisited successor S adjacent to C if S's total weight can be reduced S's total weight = C's total weight + edge weight from C to S update S's predecessor to C pq.insert( [S’s total weight,S] )
-(if S already in pq we’ll just update S's total weight)
-		 */
-
-		Set<String> unchecked = (Set<String>) graph.getAllVertices();
-		for (String s : graph.getAllVertices()) {
-			PriorityQueue<String> pq = new PriorityQueue<String>();
-			for (String ss : graph.getAllVertices()) {
-				//GET PATH
-				pq.insert(ss);
-
-				data.put(s, new Map(ss, new List<String>()));
-			}
-		}
-
-		for (String s : graph)
 	}
-
-	//    public int minDistance(int dist[], Boolean sptSet[])
-	//    {
-	//        // Initialize min value
-	//        int min = Integer.MAX_VALUE, min_index=-1;
-	// 
-	//        for (int v = 0; v < V; v++)
-	//            if (sptSet[v] == false && dist[v] <= min)
-	//            {
-	//                min = dist[v];
-	//                min_index = v;
-	//            }
-	// 
-	//        return min_index;
-	//    }
-	//    
-	//    void dijkstra(int src)
-	//    {
-	//        int dist[] = new int[graph.getAllVertices()).size()]; // The output array. dist[i] will hold
-	//                                 // the shortest distance from src to i
-	// 
-	//        // sptSet[i] will true if vertex i is included in shortest
-	//        // path tree or shortest distance from src to i is finalized
-	//        Boolean sptSet[] = new Boolean[graph.length];
-	// 
-	//        // Initialize all distances as INFINITE and stpSet[] as false
-	//        for (int i = 0; i < graph.length; i++)
-	//        {
-	//            dist[i] = Integer.MAX_VALUE;
-	//            sptSet[i] = false;
-	//        }
-	// 
-	//        // Distance of source vertex from itself is always 0
-	//        dist[src] = 0;
-	// 
-	//        
-	//      
-	//        // Find shortest path for all vertices
-	//        for (int count = 0; count < graph.length-1; count++)
-	//        {
-	//            // Pick the minimum distance vertex from the set of vertices
-	//            // not yet processed. u is always equal to src in first
-	//            // iteration.
-	//            int u = minDistance(dist, sptSet);
-	// 
-	//            // Mark the picked vertex as processed
-	//            sptSet[u] = true;
-	// 
-	//            // Update dist value of the adjacent vertices of the
-	//            // picked vertex.
-	//            for (int v = 0; v < graph.length; v++)
-	// 
-	//                // Update dist[v] only if is not in sptSet, there is an
-	//                // edge from u to v, and total weight of path from src to
-	//                // v through u is smaller than current value of dist[v]
-	//                if (!sptSet[v] && graph[u][v]!=0 &&
-	//                        dist[u] != Integer.MAX_VALUE &&
-	//                        dist[u]+graph[u][v] < dist[v])
-	//                    dist[v] = dist[u] + graph[u][v];
-	//        }
-	// 
-	//    }
+	    
+	/**
+	 * 
+	 * 
+	 * @param vertexes is the array of all vertexes
+	 * @param source is vertex1, the starting vertex
+	 * @return a map includes destinations (vertex2) and the path that leads to source (vertex1)
+	 */
+	private Map<String, List<String>> dijkstra(ArrayList<VertexNode> vertexes, VertexNode source) {
+	    PriorityQueue<VertexNode> pq = new PriorityQueue<>(); //tracking
+	    Map<String, List<String>> otherVertex = new HashMap<>(); //the map that is returned
+	    source.weight = 0; 
+	    pq.add(source); //add into the pq
+	    //start running the algorithm
+	    while(!pq.isEmpty()) {
+	        VertexNode temp = pq.poll(); //return the minimal
+	        temp.visited = true; //mark as visited
+	        for(int i = 0; i < vertexes.size(); i++) { //for all vertexes
+	            if(graph.isAdjacent(temp.name, vertexes.get(i).name) && !vertexes.get(i).visited) { //if is linked and it is not visited
+	                Integer length = temp.weight + 1; //total weight if it is linked
+	                if(vertexes.get(i).weight.compareTo(length) > 0) { //compare present weight and potential total weight
+	                    vertexes.get(i).weight = length;
+	                    vertexes.get(i).pred = temp;
+	                    //if it is already in the pq, refresh its weight and pred
+	                    if(!pq.contains(vertexes.get(i))) { //if it is not, add it
+	                        pq.add(vertexes.get(i));
+	                    }
+	                }
+	            }
+	        }
+	    }
+	    //add path with its destination into the map that will be returned
+	    for(int k = 0; k < vertexes.size(); k++) {
+	        List<String> path = new ArrayList<>(); //store the path
+	        VertexNode temp = vertexes.get(k); //begin with the destination
+	        while(true) {
+	            if(temp.pred == null) { //if it reaches the source or it is not reachable
+	                    otherVertex.put(vertexes.get(k).name, path);
+	                    break; //break from the while loop
+	            } else { // if it is still in the process, add it into the path
+	                path.add(temp.pred.name);
+	            }
+	            temp = temp.pred;
+	        }
+	    }
+	    return otherVertex;
+	}
 }
