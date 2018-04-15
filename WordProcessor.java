@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 /**
  * This class contains some utility helper methods
  * 
- * @author sapan (sapan@cs.wisc.edu)
+ * @author Chentao Wang (cwang556@wisc.edu)
  */
 public class WordProcessor {
     
@@ -69,8 +69,7 @@ public class WordProcessor {
          *      streamOfLines.map(...).filter(a -> ...).map(...) and so on
          */
 
-            Stream<String> stream = Files.lines(Paths.get(filepath)).map(String :: trim).filter(x -> x!=null && !x.equals("")).map(String :: toUpperCase);
-            return stream;
+            return Files.lines(Paths.get(filepath)).map(String :: trim).filter(x -> x!=null && !x.equals("")).map(String :: toUpperCase);
     }
     
     /**

@@ -1,25 +1,30 @@
-
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
- * 
  * This is the test class that will test the GraphProcessor.
+ * 
+ * @author Chentao Wang (cwang556@wisc.edu)
  */
 public class TestGraphProcessor {
 
-    GraphProcessor test = null;
-    List<String> expected = null; //expected List
-    List<String> actual = null; //actual List
+    GraphProcessor test;
+    List<String> expectedList; //expected List
+    List<String> actualList; //actual List
     int expectedNum;
     int actualNum;
+    Integer expectedDis;
+    Integer actualDis;
 
     /**
      * This is the JUnit setup method before class
@@ -60,10 +65,11 @@ public class TestGraphProcessor {
      */
     @Test
     public void test01_getShortestPath_on_same_input() {
-        expected = new ArrayList<String>();
-        actual = test.populateGraph("test.txt").getShortestPath("cat", "cat");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedList = new ArrayList<>();
+        actualNum = test.populateGraph("word_list.txt");
+        actualList = test.getShortestPath("RAPINE", "RAPINE");
+        if(! expectedList.equals(actualList))
+            fail("expected: " + expectedList + " actual: " + actualList);
     }
     
 
@@ -72,14 +78,38 @@ public class TestGraphProcessor {
      */
     @Test
     public void test02_getShortestPath_on_varied_input() {
-        expected = new ArrayList<String>();
-        expected.add("cat");
-        expected.add("hat");
-        expected.add("heat");
-        expected.add("wheat");
-        actual = test.populateGraph("test.txt").getShortestPath("cat", "wheat");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedList = new ArrayList<>();
+        expectedList.add("DEFINE");
+        expectedList.add("DEFILE");
+        expectedList.add("DECILE");
+        expectedList.add("DECKLE");
+        expectedList.add("HECKLE");
+        expectedList.add("HACKLE");
+        expectedList.add("HACKEE");
+        expectedList.add("HACKER");
+        expectedList.add("HANKER");
+        expectedList.add("RANKER");
+        expectedList.add("RANTER");
+        expectedList.add("RENTER");
+        expectedList.add("RENDER");
+        expectedList.add("READER");
+        expectedList.add("HEADER");
+        expectedList.add("HEALER");
+        expectedList.add("SEALER");
+        expectedList.add("SCALER");
+        expectedList.add("SCARER");
+        expectedList.add("SHARER");
+        expectedList.add("SHAVER");
+        expectedList.add("SHIVER");
+        expectedList.add("SHINER");
+        expectedList.add("WHINER");
+        expectedList.add("WHINEY");
+        expectedList.add("WHINNY");
+        expectedList.add("SHINNY");
+        actualNum = test.populateGraph("word_list.txt");
+        actualList = test.getShortestPath("DEFINE", "SHINNY");
+        if(! expectedList.equals(actualList))
+            fail("expected: " + expectedList + " actual: " + actualList);
     }
     
 
@@ -88,10 +118,11 @@ public class TestGraphProcessor {
      */
     @Test
     public void test03_getShortestPath_on_unreacheable_input() {
-        expected = new ArrayList<String>();
-        actual = test.populateGraph("test.txt").getShortestPath("cat", "kit");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedList = new ArrayList<>();
+        actualNum = test.populateGraph("word_list.txt");
+        actualList = test.getShortestPath("RAPINE", "ALIKE");
+        if(! expectedList.equals(actualList))
+            fail("expected: " + expectedList + " actual: " + actualList);
     }
     
 
@@ -100,10 +131,11 @@ public class TestGraphProcessor {
      */
     @Test
     public void test04_getShortestDistance_on_same_input() {
-        expectedNum = -1;
-        actualNum = test.populateGraph("test.txt").getShortestDistance("cat", "cat");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedDis = -1;
+        actualNum = test.populateGraph("word_list.txt");
+        actualDis = test.getShortestDistance("RAPINE", "RAPINE");
+        if(! expectedDis.equals(actualDis))
+            fail("expected: " + expectedDis + " actual: " + actualDis);
     }
     
     /**
@@ -111,23 +143,50 @@ public class TestGraphProcessor {
      */
     @Test
     public void test05_getShortestDistance_on_varied_input() {
-        expectedNum = 3;
-        actualNum = test.populateGraph("test.txt").getShortestDistance("cat", "wheat");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedDis = 26;
+        actualNum = test.populateGraph("word_list.txt");
+        actualDis = test.getShortestDistance("DEFINE", "SHINNY");
+        if(! expectedDis.equals(actualDis))
+            fail("expected: " + expectedDis + " actual: " + actualDis);
     }
     
-
     /**
      * Test if getShortestDistance returns -1 if the inputs are unreacheable.
      */
     @Test
     public void test06_getShortestDistance_on_unreacheable_input() {
-        expectedNum = -1;
-        actualNum = test.populateGraph("test.txt").getShortestPath("cat", "kit");
-        if(! expected.equals(actual))
-            fail("expected: " + expected + " actual: " + actual);
+        expectedDis = -1;
+        actualNum = test.populateGraph("word_list.txt");
+        actualDis = test.getShortestDistance("RAPINE", "ALIKE");
+        if(! expectedDis.equals(actualDis))
+            fail("expected: " + expectedDis + " actual: " + actualDis);
+    }
+
+    /**
+     * Test if getShortestPath can accept both upper case and lower case words
+     */
+    @Test
+    public void test07_getShortestPath_on_upper_and_lower_case_words() {
+        expectedList = new ArrayList<>();
+        expectedList.add("BELLIES");
+        expectedList.add("JELLIES");
+        expectedList.add("JOLLIES");
+        actualNum = test.populateGraph("word_list.txt");
+        actualList = test.getShortestPath("beLliEs", "JolLiEs");
+        //System.out.println(test.getShortestPath("beLliEs", "JolLiEs"));
+        if(! expectedList.equals(actualList))
+            fail("expected: " + expectedList + " actual: " + actualList);
     }
     
+    /**
+     * Test if getShortestDistance can accept both upper case and lower case words
+     */
+    @Test
+    public void test08_getShortestDistance_on_upper_and_lower_case_words() {
+        expectedDis = 2;
+        actualNum = test.populateGraph("word_list.txt");
+        actualDis = test.getShortestDistance("beLliEs", "JolLiEs");
+        if(! expectedDis.equals(actualDis))
+            fail("expected: " + expectedDis + " actual: " + actualDis);
+    }
 }
-
